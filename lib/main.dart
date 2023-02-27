@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_taimall_app/pages/banner_screen.dart';
 import 'package:new_taimall_app/pages/login_screen.dart';
 import 'package:new_taimall_app/pages/member_screen.dart';
+import 'package:new_taimall_app/view_model/banner_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -78,7 +78,9 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const BannerScerrn(),
+              SizedBox(height: MediaQuery.of(context).size.height / 4,
+                  width: MediaQuery.of(context).size.width,
+                  child: const BannerView()),
               Container(
                 alignment: Alignment.center,
                 height: MediaQuery.of(context).size.height / 7,
