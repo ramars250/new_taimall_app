@@ -1,6 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -51,6 +50,7 @@ class _BannerViewState extends State<BannerView> {
     _timer.cancel();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +64,6 @@ class _BannerViewState extends State<BannerView> {
               onPageChanged: (index) {
                 setState(() {
                   _currentPage = index;
-                  print(_urls[0]);
                 });
               },
               itemBuilder: (context, index) {

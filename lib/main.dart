@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:new_taimall_app/pages/login_screen.dart';
 import 'package:new_taimall_app/pages/member_screen.dart';
 import 'package:new_taimall_app/view_model/banner_view.dart';
+import 'package:new_taimall_app/view_model/logout_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,15 +46,6 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
         centerTitle: true,
-        leading: Transform.scale(
-          scale: 1.5,
-          child: IconButton(
-            icon: const Icon(
-              Icons.menu,
-            ),
-            onPressed: () {},
-          ),
-        ),
         actions: [
           Transform.scale(
             scale: 1.5,
@@ -78,7 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: MediaQuery.of(context).size.height / 4,
+              SizedBox(
+                  height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width,
                   child: const BannerView()),
               Container(
@@ -126,6 +119,27 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              child: Container(
+                height: MediaQuery.of(context).size.height / 3,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.lightBlueAccent,
+                child: const Text('放圖片的位置'),
+              ),
+            ),
+            Container(
+              color: Colors.purpleAccent,
+              child: ListTile(title: const Text('登出'), onTap: () {
+                logout();
+              }),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

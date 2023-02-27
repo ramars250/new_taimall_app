@@ -32,7 +32,7 @@ class Api {
   static const String Devices_login = '$BASE_URL/Devices/$AppToken/login';
 
   //登出會員(需要有AppToken，PUT)
-  static const String Devices_logout = '$BASE_URL/Device/$AppToken/logout';
+  static const String Devices_logout = '$BASE_URL/Devices/$AppToken/logout';
 
   //通知券類到期(需有MemberGuid)
   static const String Members_expiringcoupon =

@@ -45,3 +45,15 @@ Future getApiMemberData(url) async {
     throw Exception('Error');
   }
 }
+
+Future goMemberLogout(url) async {
+  final json = jsonEncode({
+    "DeviceType": 1.toString(),
+    "PushToken": '',
+  });
+  http.Response response = await http.put(url, headers: headers, body: json);
+  // print(response.statusCode);
+  if (response.statusCode == 200) {
+    // print('會員已登出');
+  }
+}
