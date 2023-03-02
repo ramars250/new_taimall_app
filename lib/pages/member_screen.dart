@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:new_taimall_app/models/member_model.dart';
+import 'package:new_taimall_app/pages/login_screen.dart';
 import 'package:new_taimall_app/pages/member_detail_screen.dart';
 import 'package:new_taimall_app/service/api.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MemberScreen extends StatefulWidget {
   const MemberScreen({Key? key}) : super(key: key);
@@ -15,7 +17,10 @@ class MemberScreen extends StatefulWidget {
 class _MemberScreenState extends State<MemberScreen> {
   @override
   void initState() {
-    getMeData();
+    if (Api.memberGuid != null) {
+      getMeData();
+    }
+
     super.initState();
   }
 
@@ -103,9 +108,19 @@ class _MemberScreenState extends State<MemberScreen> {
                   alignment: Alignment.centerLeft,
                   margin: const EdgeInsets.only(left: 5, bottom: 5),
                   padding: const EdgeInsets.all(5),
-                  child: const Text(
-                    '請先  登入  或  註冊  會員',
-                    style: TextStyle(fontSize: 18),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      '請先  登入  或  註冊  會員',
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
                 )
               : Container(

@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:new_taimall_app/pages/login_screen.dart';
 import 'package:new_taimall_app/pages/member_screen.dart';
+import 'package:new_taimall_app/service/api.dart';
 import 'package:new_taimall_app/view_model/banner_view.dart';
 import 'package:new_taimall_app/view_model/logout_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  var value = prefs.getString('MemberGuid');
+  var value1 = prefs.getString('DeviceType');
+  if (value != null) {
+    Api.memberGuid = value;
+  }
+  print(value1);
   runApp(const MyApp());
 }
 
@@ -50,14 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Transform.scale(
             scale: 1.5,
             child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
-                  ),
-                );
-              },
+              onPressed: () {},
               icon: const Icon(
                 Icons.notifications_none,
               ),
@@ -135,9 +139,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               color: Colors.purpleAccent,
-              child: ListTile(title: const Text('登出'), onTap: () {
-                logout();
-              }),
+              child: ListTile(
+                  title: const Text('登出'),
+                  onTap: () {
+                    logout();
+                    Navigator.pop(context);
+                  }),
             ),
           ],
         ),

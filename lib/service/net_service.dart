@@ -16,29 +16,12 @@ Future getApiData(url) async {
   }
 }
 
-Future putApiData(url, cell, pass) async {
-  final json = jsonEncode({
-    "DeviceType": 1.toString(),
-    "PushToken": "",
-    "CellPhone": "$cell",
-    "Password": "$pass",
-  });
-  http.Response response = await http.put(url, headers: headers, body: json);
-  if (response.statusCode == 200) {
-    var successData = response.body;
-    // print(successData);
-    return successData;
-  } else {
-    throw Exception('Error');
-  }
-  // print(response.statusCode);
-  // print(response.body);
-}
-
 Future getApiMemberData(url) async {
   http.Response response = await http.get(url, headers: headers);
   if (response.statusCode == 200) {
-    MemberData memberPointData = MemberData.fromJson(json.decode(response.body));
+    MemberData memberPointData = MemberData.fromJson(
+      json.decode(response.body),
+    );
     // print(memberPointData);
     return const MemberScreen();
   } else {
@@ -46,14 +29,3 @@ Future getApiMemberData(url) async {
   }
 }
 
-Future goMemberLogout(url) async {
-  final json = jsonEncode({
-    "DeviceType": 1.toString(),
-    "PushToken": '',
-  });
-  http.Response response = await http.put(url, headers: headers, body: json);
-  // print(response.statusCode);
-  if (response.statusCode == 200) {
-    // print('會員已登出');
-  }
-}
