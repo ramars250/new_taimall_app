@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:new_taimall_app/pages/login_screen.dart';
 import 'package:new_taimall_app/pages/member_screen.dart';
 import 'package:new_taimall_app/service/api.dart';
 import 'package:new_taimall_app/view_model/banner_view.dart';
 import 'package:new_taimall_app/view_model/logout_view.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -10,13 +12,26 @@ void main() async {
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  var value = prefs.getString('MemberGuid');
-  var value1 = prefs.getString('DeviceType');
-  if (value != null) {
-    Api.memberGuid = value;
+  runApp(
+    ProviderScope(
+      overrides: [
+        sharedPreferencesProvider.overrideWithValue(prefs),
+      ],
+      child: const MyApp(),
+    ),
+  );
+}
+
+final sharedPreferencesProvider =
+    Provider<SharedPreferences>((ref) => throw UnimplementedError());
+
+final memGuidProvider = StateProvider((ref) => '');
+
+loadMemFromPrefs() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  if (prefs.getString('MemberGuid') != null) {
+    Api.memberGuid = prefs.getString('MemberGuid') ?? "";
   }
-  print(value1);
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -47,6 +62,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
+    loadMemFromPrefs();
     super.initState();
   }
 
@@ -61,7 +77,14 @@ class _MyHomePageState extends State<MyHomePage> {
           Transform.scale(
             scale: 1.5,
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ),
+                );
+              },
               icon: const Icon(
                 Icons.notifications_none,
               ),
@@ -72,15 +95,18 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              // Consumer(builder: (context, ref, child) {
+              //   final data = ref.watch(memGuidProvider);
+              //   return Text(data);
+              // }),
               SizedBox(
                   height: MediaQuery.of(context).size.height / 4,
                   width: MediaQuery.of(context).size.width,
                   child: const BannerView()),
               Container(
                 alignment: Alignment.center,
-                height: MediaQuery.of(context).size.height / 7,
+                height: MediaQuery.of(context).size.height / 6,
                 width: MediaQuery.of(context).size.width,
                 color: Colors.yellow,
                 child: const MemberScreen(),
@@ -143,7 +169,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: const Text('登出'),
                   onTap: () {
                     logout();
-                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MyApp(),
+                      ),
+                    );
                   }),
             ),
           ],

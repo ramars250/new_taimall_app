@@ -9,6 +9,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  barcode:
+    dependency: transitive
+    description:
+      name: barcode
+      sha256: "52570564684bbb0240a9f1fdb6bad12adc5e0540103c1c96d6dd550bd928b1c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.3"
+  barcode_widget:
+    dependency: "direct main"
+    description:
+      name: barcode_widget
+      sha256: ea0c0578b5db3ca3a583d80e05eb47bfb70419e3a23b920d93ae7968c45c20ce
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -86,6 +102,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_riverpod:
+    dependency: "direct main"
+    description:
+      name: flutter_riverpod
+      sha256: "40c0d7d03ccd24fa32ea08dcfc4df9bb92c4c26c9a91938945da3be10ed8ca83"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -208,6 +232,70 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.2.4"
+  qr:
+    dependency: transitive
+    description:
+      name: qr
+      sha256: "64957a3930367bf97cc211a5af99551d630f2f4625e38af10edd6b19131b64b3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
+  riverpod:
+    dependency: transitive
+    description:
+      name: riverpod
+      sha256: c5aea6c3fed340707f013a023a37ab388bf45611a8a4f7e76b5e9007eb76cd25
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
+  screen_brightness:
+    dependency: "direct main"
+    description:
+      name: screen_brightness
+      sha256: "62fd61a64e68b32b98b840bad7d8b6822bbc40e63c2b569a5f85528484c86b41"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.2"
+  screen_brightness_android:
+    dependency: transitive
+    description:
+      name: screen_brightness_android
+      sha256: "4e4ba0c44b5c24be20030733ada0c844aa0e8f1963f5d7cd72f5b2fe54a61495"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
+  screen_brightness_ios:
+    dependency: transitive
+    description:
+      name: screen_brightness_ios
+      sha256: "99adc3ca5490b8294284aad5fcc87f061ad685050e03cf45d3d018fe398fd9a2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
+  screen_brightness_macos:
+    dependency: transitive
+    description:
+      name: screen_brightness_macos
+      sha256: "64b34e7e3f4900d7687c8e8fb514246845a73ecec05ab53483ed025bd4a899fd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0+1"
+  screen_brightness_platform_interface:
+    dependency: transitive
+    description:
+      name: screen_brightness_platform_interface
+      sha256: b211d07f0c96637a15fb06f6168617e18030d5d74ad03795dd8547a52717c171
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
+  screen_brightness_windows:
+    dependency: transitive
+    description:
+      name: screen_brightness_windows
+      sha256: "80d90ecdc63fc0823f2ecb1be323471619287937e14210650d7b25ca181abd05"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -285,6 +373,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  state_notifier:
+    dependency: transitive
+    description:
+      name: state_notifier
+      sha256: "8fe42610f179b843b12371e40db58c9444f8757f8b69d181c97e50787caed289"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.2+1"
   stream_channel:
     dependency: transitive
     description:

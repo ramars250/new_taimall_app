@@ -9,8 +9,8 @@ void logout() async {
   var url = Uri.parse(Api.Devices_logout);
   var deviceType = prefs.getString('DeviceType');
   goMemberLogout(url, deviceType);
-  prefs.remove('MemberGuid');
-  // print(prefs.getString('MemberGuid'));
+  prefs.clear();
+  Api().getMemGuid = '';
 }
 
 Future goMemberLogout(url, deviceType) async {
@@ -19,10 +19,8 @@ Future goMemberLogout(url, deviceType) async {
     "DeviceType": deviceType,
     "PushToken": '',
   });
-  print(deviceType);
   http.Response response = await http.put(url, headers: headers, body: json);
-  // print(response.statusCode);
   if (response.statusCode == 200) {
-    // print('會員已登出');
+    return ;
   }
 }

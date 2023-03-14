@@ -155,11 +155,13 @@
 //   static const String Sps_cardexchange = '$BASE_URL/Sps/cardexchange';
 // }
 
-// ignore_for_file: constant_identifier_names
-
-import 'package:shared_preferences/shared_preferences.dart';
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 class Api {
+
+  set getMemGuid(String guid) {
+    memberGuid = guid;
+  }
 
   static String memberGuid = '';
 
@@ -196,26 +198,25 @@ class Api {
   static const String Devices_logout = '$BASE_URL/Devices/$AppToken/logout';
 
   //通知券類到期(需有MemberGuid)
-  static String Members_expiringcoupon =
+  static String get Members_expiringcoupon =>
       '$BASE_URL/Members/$memberGuid/expiringcoupon';
 
   //通知點數到期(需有MemberGuid)
-  static  String Members_notifypoint =
+  static String get Members_notifypoint =>
       '$BASE_URL/Members/$memberGuid/NotifyPoints';
 
   //重要訊息清單(需有MemberGuid)
-  static  String Members_expiringpoints =
+  static String get getMembers_expiringpoints =>
       '$BASE_URL/Members/$memberGuid/expiringpoints';
 
   //VIP門檻提醒通知(需有MemberGuid)
-  static  String Members_VIPAlert =
-      '$BASE_URL/Members/$memberGuid/VIPAlert';
+  static String get Members_VIPAlert => '$BASE_URL/Members/$memberGuid/VIPAlert';
 
   //忘記(變更)密碼時驗證會員身分(PUT)
   static const String Members_verify = '$BASE_URL/Members/verify';
 
   //忘記(變更)密碼時輸入新密碼(需有MemberGuid，PUT)
-  static  String Members_smscomplete =
+  static String get Members_smscomplete =>
       '$BASE_URL/Members/$memberGuid/smscomplete';
 
   //申請新會員取得簡訊認證碼(POST)
@@ -231,83 +232,81 @@ class Api {
   static const String Members = '$BASE_URL/Members';
 
   //取得會員資料(需有MemberGuid)
-  static  String Members_info = '$BASE_URL/Members/$memberGuid';
+  static String get Members_info => '$BASE_URL/Members/$memberGuid';
 
   //修改會員資料(需有MemberGuid，PUT)
-  static  String Member_revise = '$BASE_URL/Members/$memberGuid';
+  static String get Member_revise => '$BASE_URL/Members/$memberGuid';
 
   //取得會員車牌資料(需有MemberGuid)
-  static  String Members_plate = '$BASE_URL/Members/$memberGuid/plate';
+  static String get Members_plate => '$BASE_URL/Members/$memberGuid/plate';
 
   //會員車牌綁定(需有MemberGuid，PUT)
-  static  String Members_plate2 = '$BASE_URL/Members/$memberGuid/plate';
+  static String get Members_plate2 => '$BASE_URL/Members/$memberGuid/plate';
 
   //會員載具綁定(需有MemberGuid，PUT)
-  static  String Members_carrierID =
-      '$BASE_URL/Members/$memberGuid/CarrierID';
+  static String get Members_carrierID => '$BASE_URL/Members/$memberGuid/CarrierID';
 
   //取得會員點數及身分標記(需有MemberGuid)
-  static  String Members_summary = '$BASE_URL/Members/$memberGuid/summary';
+  static String get Members_summary => '$BASE_URL/Members/$memberGuid/summary';
 
   //取得會員商品券(需有MemberGuid)
-  static  String Members_coupons = '$BASE_URL/Members/$memberGuid/coupons';
+  static String get Members_coupons => '$BASE_URL/Members/$memberGuid/coupons';
 
   //取得會員交易明細(需有MemberGuid)
-  static  String Members_detail = '$BASE_URL/Members/$memberGuid/detail';
+  static String get Members_detail => '$BASE_URL/Members/$memberGuid/detail';
 
   //取得會員交易明細發票內容(需有MemberGuid)
-  static  String Members_invoicedata =
+  static String get Members_invoicedata =>
       '$BASE_URL/Members/$memberGuid/invoicedata';
 
   //發票補登(需有MemberGuid，POST)
-  static  String Members_invoice = '$BASE_URL/Members/$memberGuid/invoice';
+  static String get Members_invoice => '$BASE_URL/Members/$memberGuid/invoice';
 
   //取得點數兌換贈品清單(需有MemberGuid)
-  static  String Members_gifts = '$BASE_URL/Members/$memberGuid/gifts';
+  static String get Members_gifts => '$BASE_URL/Members/$memberGuid/gifts';
 
   //點數贈品兌換(多品項一次兌換，需有MemberGuid，POST)
-  static  String Members_redeem = '$BASE_URL/Members/$memberGuid/redeem';
+  static String get Members_redeem => '$BASE_URL/Members/$memberGuid/redeem';
 
   //點數贈品兌換(單品項兌換多個，需有MemberGuid，POST)
-  static  String Members_redeem2 = '$BASE_URL/Members/$memberGuid/redeem2';
+  static String get Members_redeem2 => '$BASE_URL/Members/$memberGuid/redeem2';
 
   //取得好禮兌換清單(需有MemberGuid)
-  static  String Members_redeemlist =
-      '$BASE_URL/Members/$memberGuid/redeemlist';
+  static String get Members_redeemlist => '$BASE_URL/Members/$memberGuid/redeemlist';
 
   //好禮贈品兌換取消(需有MemberGuid，POST)
-  static  String Members_redeemcancel =
+  static String get Members_redeemcancel =>
       '$BASE_URL/Members/$memberGuid/RedeemCancel';
 
   //取得線上購物推薦商品(需有MemberGuid)
-  static  String Members_favorite = '$BASE_URL/Members/$memberGuid/favorite';
+  static String get Members_favorite => '$BASE_URL/Members/$memberGuid/favorite';
 
   //取得活動列表(需有MemberGuid)
-  static  String Sps_list = '$BASE_URL/Sps/$memberGuid/splist';
+  static String get Sps_list => '$BASE_URL/Sps/$memberGuid/splist';
 
   //取得卡友禮資料(需有MemberGuid)
-  static  String Sps_card = '$BASE_URL/Sps/$memberGuid/spcard';
+  static String get Sps_card => '$BASE_URL/Sps/$memberGuid/spcard';
 
   //兌換卡友禮(需有MemberGuid，POST)
-  static  String Sps_exchangecard = '$BASE_URL/Sps/$memberGuid/spcard';
+  static String get Sps_exchangecard => '$BASE_URL/Sps/$memberGuid/spcard';
 
   //取得全館滿額(需有MemberGuid)
-  static  String Sps_coupon = '$BASE_URL/Sps/$memberGuid/spcoupon';
+  static String get Sps_coupon => '$BASE_URL/Sps/$memberGuid/spcoupon';
 
   //兌換全館(需有MemberGuid，POST)
-  static  String Sps_exchamgeall = '$BASE_URL/Sps/$memberGuid/spcoupon';
+  static String get Sps_exchamgeall => '$BASE_URL/Sps/$memberGuid/spcoupon';
 
   //取得銀行禮(需有MemberGuid)
-  static  String Sps_bank = '$BASE_URL/Sps/$memberGuid/spbank';
+  static String get Sps_bank => '$BASE_URL/Sps/$memberGuid/spbank';
 
   //兌換銀行禮(需有MemberGuid，POST)
-  static  String Sps_exchangebank = '$BASE_URL/Sps/$memberGuid/spbank';
+  static String get Sps_exchangebank => '$BASE_URL/Sps/$memberGuid/spbank';
 
   //取得專區(需有MemberGuid)
-  static  String Sps_area = '$BASE_URL/Sps/$memberGuid/sparea';
+  static String get Sps_area => '$BASE_URL/Sps/$memberGuid/sparea';
 
   //取消專區(需有MemberGuid，POST)
-  static  String Sps_cancelarea = '$BASE_URL/Sps/$memberGuid/sparea';
+  static String get Sps_cancelarea => '$BASE_URL/Sps/$memberGuid/sparea';
 
   //銀行禮兌畢確認
   static const String Sps_bankexchange = '$BASE_URL/Sps/bankexchange';
